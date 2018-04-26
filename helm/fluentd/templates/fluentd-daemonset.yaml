@@ -20,7 +20,7 @@ spec:
         effect: NoSchedule
       containers:
       - name: fluentd
-        image: upp-fluentd:latest
+        image: coco/upp-fluentd:latest
         # env:
         resources:
           limits:
