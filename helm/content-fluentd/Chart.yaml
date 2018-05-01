@@ -1,4 +1,4 @@
 apiVersion: v1
 description: fluentd Helm chart for Kubernetes
-name: fluentd
+name: content-fluentd
 version: 0.0.0
