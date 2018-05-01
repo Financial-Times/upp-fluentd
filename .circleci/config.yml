@@ -1,7 +1,7 @@
 version: 2
 jobs:
   dockerfile:
-    working_directory: /upp-fluentd
+    working_directory: /content-fluentd
     docker:
       - image: docker:18.01.0-ce-git
     steps:

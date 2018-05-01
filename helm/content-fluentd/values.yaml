@@ -3,7 +3,7 @@ service:
   namespace: kube-system
 
 image:
-  repository: coco/upp-fluentd
+  repository: coco/content-fluentd
   pullPolicy: Always
 
 resources:
