@@ -26,10 +26,15 @@ spec:
           containerPort: 8080
           protocol: TCP
         livenessProbe:
-          httpGet:
-            path: /fluentd.pod.healthcheck?json=%7B%22log%22%3A+%22health+check%22%7D
+          tcpSocket:
             port: 8080
           initialDelaySeconds: 10
+        readinessProbe:
+          httpGet:
+            path: "/fluentd.pod.healthcheck?json=%7B%22log%22%3A+%22health+check%22%7D"
+            port: 8080
+          initialDelaySeconds: 15
+          periodSeconds: 30
         volumeMounts:
         - name: varlog
           mountPath: /var/log
