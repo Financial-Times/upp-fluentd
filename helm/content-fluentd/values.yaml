@@ -1,6 +1,5 @@
 service:
   name: "" # The name of the service, should be defined in the specific app-configs folder.
-  namespace: kube-system
 
 image:
   repository: coco/content-fluentd
