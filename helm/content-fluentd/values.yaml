@@ -1,0 +1,14 @@
+service:
+  name: "" # The name of the service, should be defined in the specific app-configs folder.
+
+image:
+  repository: coco/content-fluentd
+  pullPolicy: IfNotPresent
+
+resources:
+  limits:
+    cpu: 1000m
+    memory: 200Mi
+  requests:
+    cpu: 100m
+    memory: 200Mi

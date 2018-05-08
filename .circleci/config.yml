@@ -1,0 +1,17 @@
+version: 2
+jobs:
+  dockerfile:
+    working_directory: /content-fluentd
+    docker:
+      - image: docker:18.01.0-ce-git
+    steps:
+      - checkout
+      - setup_docker_engine
+      - run:
+          name: Build Dockerfile
+          command: docker build .
+workflows:
+  version: 2
+  build-docker:
+    jobs:
+      - dockerfile
