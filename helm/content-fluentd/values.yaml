@@ -1,13 +1,13 @@
 service:
   name: "" # The name of the service, should be defined in the specific app-configs folder.
-  namespace: kube-system
 
 image:
   repository: coco/content-fluentd
-  pullPolicy: Always
+  pullPolicy: IfNotPresent
 
 resources:
   limits:
+    cpu: 1000m
     memory: 200Mi
   requests:
     cpu: 100m
