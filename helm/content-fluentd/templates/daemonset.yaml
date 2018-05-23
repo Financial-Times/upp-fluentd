@@ -26,6 +26,27 @@ spec:
         imagePullPolicy: {{ .Values.image.pullPolicy }}
         resources:
 {{ toYaml .Values.resources | indent 12 }}
+        env:
+        - name: KINESIS_STREAM
+          valueFrom:
+            configMapKeyRef:
+              name: global-config
+              key: content.fluentd.kinesis.stream
+        - name: AWS_ACCESS_KEY
+          valueFrom:
+            secretKeyRef:
+              name: content-fluentd
+              key: aws.access.key
+        - name: AWS_SECRET_ACCESS_KEY
+          valueFrom:
+            secretKeyRef:
+              name: content-fluentd
+              key: aws.secret.access.key
+        - name: AWS_REGION
+          valueFrom:
+            secretKeyRef:
+              name: content-fluentd
+              key: aws.region
         ports:
         - name: http-input
           containerPort: 8080
