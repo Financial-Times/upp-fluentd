@@ -27,6 +27,11 @@ spec:
         resources:
 {{ toYaml .Values.resources | indent 12 }}
         env:
+        - name: ENVIRONMENT_NAME
+          valueFrom:
+            configMapKeyRef:
+              name: global-config
+              key: environment
         - name: KINESIS_STREAM
           valueFrom:
             configMapKeyRef:
