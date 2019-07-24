@@ -52,6 +52,16 @@ spec:
             secretKeyRef:
               name: content-fluentd
               key: aws.region
+        - name: S3_ACCESS_KEY
+          valueFrom:
+            secretKeyRef:
+              name: content-fluentd
+              key: s3.access.key
+        - name: S3_SECRET_ACCESS_KEY
+          valueFrom:
+            secretKeyRef:
+              name: content-fluentd
+              key: s3.secret.access.key
         ports:
         - name: http-input
           containerPort: 8080
