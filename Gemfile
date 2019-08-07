@@ -3,7 +3,7 @@
 
 source "https://rubygems.org"
 
-gem "fluentd", "0.12.43"
+gem "fluentd", "1.6.3"
 gem "fluent-plugin-secure-forward"
 gem "fluent-plugin-record-reformer"
 gem "fluent-plugin-kubernetes_metadata_filter"
