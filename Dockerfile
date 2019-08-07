@@ -2,9 +2,9 @@ FROM fluent/fluentd:v1.6-debian-1
 
 USER root
 
-ENV PATH /fluentd/vendor/bundle/ruby/2.3.0/bin:$PATH
-ENV GEM_PATH /fluentd/vendor/bundle/ruby/2.3.0
-ENV GEM_HOME /fluentd/vendor/bundle/ruby/2.3.0
+ENV PATH /fluentd/vendor/bundle/ruby/2.6.0/bin:$PATH
+ENV GEM_PATH /fluentd/vendor/bundle/ruby/2.6.0
+ENV GEM_HOME /fluentd/vendor/bundle/ruby/2.6.0
 
 COPY Gemfile* /fluentd/
 
@@ -13,7 +13,7 @@ RUN buildDeps="sudo make gcc g++ libc-dev ruby-dev libffi-dev" \
    && apt-get upgrade -y \
    && apt-get install -y --no-install-recommends $buildDeps ruby-bundler \
    && gem update --system \
-   && gem install bundler -v 2.0.2 \
+   && gem install bundler:2.0.2 \
    && bundle config silence_root_warning true \
    && bundle install --gemfile=/fluentd/Gemfile --path=/fluentd/vendor/bundle \
    && SUDO_FORCE_REMOVE=yes apt-get purge -y --auto-remove -o APT::AutoRemove::RecommendsImportant=false $buildDeps \
