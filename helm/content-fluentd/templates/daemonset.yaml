@@ -18,8 +18,7 @@ spec:
         app: {{ .Values.service.name }}
     spec:
       tolerations:
-      - key: node-role.kubernetes.io/master
-        effect: NoSchedule
+      - operator: "Exists"
       containers:
       - name: {{ .Values.service.name }}
         image: "{{ .Values.image.repository }}:{{ .Chart.Version }}"
