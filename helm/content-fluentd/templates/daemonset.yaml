@@ -14,11 +14,26 @@ spec:
     type: "RollingUpdate"
   template:
     metadata:
+{{- with .Values.annotations }}
+      annotations:
+{{ toYaml . | indent 8 }}
+{{- end }}
       labels:
         app: {{ .Values.service.name }}
     spec:
       tolerations:
       - operator: "Exists"
+{{- if .Values.eksCluster }}
+      affinity:
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+            - matchExpressions:
+              - key: alpha.eksctl.io/nodegroup-name
+                operator: NotIn
+                values:
+                - ng-kiam-server
+{{- end }}
       containers:
       - name: {{ .Values.service.name }}
         image: "{{ .Values.image.repository }}:{{ .Chart.Version }}"
@@ -36,31 +51,11 @@ spec:
             configMapKeyRef:
               name: global-config
               key: content.fluentd.kinesis.stream
-        - name: AWS_ACCESS_KEY
-          valueFrom:
-            secretKeyRef:
-              name: content-fluentd
-              key: aws.access.key
-        - name: AWS_SECRET_ACCESS_KEY
-          valueFrom:
-            secretKeyRef:
-              name: content-fluentd
-              key: aws.secret.access.key
         - name: AWS_REGION
           valueFrom:
-            secretKeyRef:
-              name: content-fluentd
+            configMapKeyRef:
+              name: global-config
               key: aws.region
-        - name: S3_ACCESS_KEY
-          valueFrom:
-            secretKeyRef:
-              name: splunk-forwarder
-              key: aws.access_key_id
-        - name: S3_SECRET_ACCESS_KEY
-          valueFrom:
-            secretKeyRef:
-              name: splunk-forwarder
-              key: aws.secret_access_key
         - name: BUCKET_NAME
           valueFrom:
             configMapKeyRef:
