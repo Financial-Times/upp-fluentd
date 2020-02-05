@@ -40,16 +40,6 @@ spec:
             configMapKeyRef:
               name: global-config
               key: content.fluentd.kinesis.stream
-        - name: AWS_ACCESS_KEY
-          valueFrom:
-            secretKeyRef:
-              name: content-fluentd
-              key: aws.access.key
-        - name: AWS_SECRET_ACCESS_KEY
-          valueFrom:
-            secretKeyRef:
-              name: content-fluentd
-              key: aws.secret.access.key
         - name: AWS_REGION
           valueFrom:
             secretKeyRef:
