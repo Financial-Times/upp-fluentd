@@ -12,3 +12,5 @@ resources:
   requests:
     cpu: 100m
     memory: 200Mi
+annotations:
+  iam.amazonaws.com/role: "K8sPacSplunkFWS3"
