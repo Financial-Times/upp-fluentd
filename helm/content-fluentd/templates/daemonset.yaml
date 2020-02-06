@@ -21,6 +21,8 @@ spec:
       labels:
         app: {{ .Values.service.name }}
     spec:
+      nodeSelector:
+        alpha.eksctl.io/nodegroup-name: ng-workload
       tolerations:
       - operator: "Exists"
       containers:
