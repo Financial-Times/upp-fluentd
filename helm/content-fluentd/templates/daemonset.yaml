@@ -22,7 +22,8 @@ spec:
         app: {{ .Values.service.name }}
     spec:
       nodeSelector:
-        alpha.eksctl.io/nodegroup-name: ng-workload
+        alpha.eksctl.io/nodegroup-name: ng-common
+        alpha.eksctl.io/nodegroup-name: ng-prom
       tolerations:
       - operator: "Exists"
       containers:
