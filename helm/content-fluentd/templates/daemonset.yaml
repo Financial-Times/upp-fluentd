@@ -31,7 +31,7 @@ spec:
               - key: alpha.eksctl.io/nodegroup-name
                 operator: NotIn
                 values:
-                - ng-kiam
+                - ng-kiam-server
       containers:
       - name: {{ .Values.service.name }}
         image: "{{ .Values.image.repository }}:{{ .Chart.Version }}"
