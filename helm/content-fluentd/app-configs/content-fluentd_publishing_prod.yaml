@@ -1,0 +1,5 @@
+# Values used for the deployed application.
+service:
+  name: content-fluentd
+kinesis:
+  content.fluentd.kinesis.stream: content-fluentd-kinesis-prod-ContentFluentdKinesisStream-1Q43UOSV3G09U
