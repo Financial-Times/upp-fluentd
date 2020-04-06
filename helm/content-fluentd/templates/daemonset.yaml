@@ -33,6 +33,16 @@ spec:
                 operator: NotIn
                 values:
                 - ng-kiam-server
+{{- else }}
+      affinity:
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+            - matchExpressions:
+              - key: kubernetes.io/role
+                operator: NotIn
+                values:
+                - master
 {{- end }}
       containers:
       - name: {{ .Values.service.name }}
