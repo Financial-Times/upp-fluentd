@@ -1,0 +1,7 @@
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: fluentd-config
+  namespace: default
+data:
+{{ if .Values.kinesis }}{{ toYaml .Values.kinesis | indent 2 }}{{ end }}

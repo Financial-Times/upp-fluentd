@@ -59,13 +59,13 @@ spec:
         - name: KINESIS_STREAM
           valueFrom:
             configMapKeyRef:
-              name: global-config
+              name: fluentd-config
               key: content.fluentd.kinesis.stream
         - name: AWS_REGION
           valueFrom:
             configMapKeyRef:
-              name: global-config
-              key: aws.region
+              name: fluentd-config
+              key: kinesis.aws.region
         - name: BUCKET_NAME
           valueFrom:
             configMapKeyRef:
