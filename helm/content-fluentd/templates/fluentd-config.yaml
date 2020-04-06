@@ -4,5 +4,4 @@ metadata:
   name: fluentd-config
   namespace: default
 data:
-  kinesis.aws.region: eu-west-1
 {{ if .Values.kinesis }}{{ toYaml .Values.kinesis | indent 2 }}{{ end }}
