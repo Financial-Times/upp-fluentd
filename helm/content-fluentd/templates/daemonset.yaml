@@ -1,4 +1,8 @@
+{{- if .Values.eksCluster }}
+apiVersion: apps/v1
+{{- else }}
 apiVersion: extensions/v1beta1
+{{- end }}
 kind: DaemonSet
 metadata:
   name: {{ .Values.service.name }}
@@ -29,10 +33,10 @@ spec:
           requiredDuringSchedulingIgnoredDuringExecution:
             nodeSelectorTerms:
             - matchExpressions:
-              - key: alpha.eksctl.io/nodegroup-name
+              - key: role
                 operator: NotIn
                 values:
-                - ng-kiam-server
+                - kiam-server
 {{- else }}
       affinity:
         nodeAffinity:
