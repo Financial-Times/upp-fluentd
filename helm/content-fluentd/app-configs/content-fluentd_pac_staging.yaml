@@ -1,0 +1,6 @@
+# Values used for the deployed application.
+service:
+  name: content-fluentd
+kinesis:
+  content.fluentd.kinesis.stream: content-fluentd-kinesis-staging-ContentFluentdKinesisStream-VG15XCM82X22
+  kinesis.aws.region: eu-west-1
