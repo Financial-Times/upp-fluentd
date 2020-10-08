@@ -2,7 +2,6 @@
 service:
   name: content-fluentd
 
-eksCluster: true
 
 kinesis:
   content.fluentd.kinesis.stream: content-fluentd-kinesis-staging-ContentFluentdKinesisStream-VG15XCM82X22

@@ -1,8 +1,4 @@
-{{- if .Values.eksCluster }}
 apiVersion: apps/v1
-{{- else }}
-apiVersion: extensions/v1beta1
-{{- end }}
 kind: DaemonSet
 metadata:
   name: {{ .Values.service.name }}
@@ -27,7 +23,6 @@ spec:
     spec:
       tolerations:
       - operator: "Exists"
-{{- if .Values.eksCluster }}
       affinity:
         nodeAffinity:
           requiredDuringSchedulingIgnoredDuringExecution:
@@ -37,17 +32,6 @@ spec:
                 operator: NotIn
                 values:
                 - kiam-server
-{{- else }}
-      affinity:
-        nodeAffinity:
-          requiredDuringSchedulingIgnoredDuringExecution:
-            nodeSelectorTerms:
-            - matchExpressions:
-              - key: kubernetes.io/role
-                operator: NotIn
-                values:
-                - master
-{{- end }}
       containers:
       - name: {{ .Values.service.name }}
         image: "{{ .Values.image.repository }}:{{ .Chart.Version }}"

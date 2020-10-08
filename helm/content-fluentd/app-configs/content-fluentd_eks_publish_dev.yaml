@@ -2,7 +2,6 @@
 service:
   name: content-fluentd
 
-eksCluster: true
 
 kinesis:
   content.fluentd.kinesis.stream: content-fluentd-kinesis-dev-ContentFluentdKinesisStream-1CJKQ4PH5SK32
