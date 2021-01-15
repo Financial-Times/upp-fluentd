@@ -8,7 +8,7 @@ image:
 
 resources:
   limits:
-    cpu: 900m
+    cpu: 1300m
     memory: 300Mi
   requests:
     cpu: 100m
